@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,5 +20,17 @@ public class EmployeeService {
     public Employee addEmployee(Employee employee){
         employee.setEmployeeCode(UUID.randomUUID().toString());
         return employeeRepository.save(employee);
+    }
+
+    public List<Employee> findAllEmployees(){
+        return employeeRepository.findAll();
+    }
+
+    public Employee updateEmployee(Employee employee){
+        return employeeRepository.save(employee);
+    }
+
+    public void deleteEmployee(long id){
+        employeeRepository.deleteEmployeeById(id);
     }
 }
