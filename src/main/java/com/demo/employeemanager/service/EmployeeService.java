@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
@@ -29,6 +27,7 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee){
+        System.out.println("SERVICE");
         return employeeRepository.save(employee);
     }
 
