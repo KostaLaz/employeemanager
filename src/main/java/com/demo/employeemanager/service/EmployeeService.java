@@ -1,5 +1,6 @@
 package com.demo.employeemanager.service;
 
+import com.demo.employeemanager.exception.UserNotFoundException;
 import com.demo.employeemanager.model.Employee;
 import com.demo.employeemanager.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -32,5 +34,9 @@ public class EmployeeService {
 
     public void deleteEmployee(long id){
         employeeRepository.deleteEmployeeById(id);
+    }
+
+    public Employee findEmployee(long id){
+        return employeeRepository.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
     }
 }
